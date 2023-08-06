@@ -1,7 +1,13 @@
-$(document).ready(function () {
+const userAction = "touchstart touchmove mousedown keyup";
 
-  var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+$("body, html").one(userAction, function(e) {
+  
+  // Unbind userAction
+  $("body, html").off(userAction);
+
   var audioElement = document.getElementById('audioElement');
+  
+  var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   var audioSrc = audioCtx.createMediaElementSource(audioElement);
   var analyser = audioCtx.createAnalyser();
 
